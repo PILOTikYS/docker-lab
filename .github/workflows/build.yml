@@ -29,3 +29,14 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/pilotikys/my-api-check:latest
+
+      - name: Deploy to Target Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.TARGET_IP }}
+          username: devops
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/docker-compose-lab
+            docker compose pull
+            docker compose up -d
