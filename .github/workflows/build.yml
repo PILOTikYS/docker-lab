@@ -30,7 +30,7 @@ jobs:
           push: true
           tags: ghcr.io/pilotikys/my-api-check:latest
 
-      - name: Deploy to Target Server
+      - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.TARGET_IP }}
